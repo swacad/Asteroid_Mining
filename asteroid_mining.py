@@ -52,7 +52,33 @@ def compute_wavelengths(image):
     wavelengths = wavelengths / 1000
     # print(wavelengths)
 
+    # Apply Gaussian blur to filter out noise on image data
+    kernel_size = (5, 5)
+    wavelengths = cv2.GaussianBlur(wavelengths, kernel_size, 0)
+
     return wavelengths
+
+
+def plot_histogram(wavelengths, filename):
+    plot_min = np.floor(np.around(wavelengths.min() * 1000, 3)) / 1000
+    plot_max = np.ceil(np.around(wavelengths.max() * 1000, 3)) / 1000
+    hist = cv2.calcHist([wavelengths], [0], None, [100], [plot_min, plot_max]).flatten()
+    plt.plot(hist)
+    plt.title('Wavelengths Histogram')
+    plt.ylabel('Count')
+    plt.yscale('log')
+    plt.xlabel('Bins')
+    # plt.show()
+    plt.savefig(filename)
+
+
+
+def print_wavelength_info(wavelengths):
+    print('wavelengths.min() = ' + str(wavelengths.min()))
+    print('wavelengths.max() = ' + str(wavelengths.max()))
+    print('wavelengths.mean() = ' + str(wavelengths.mean()))
+    print('wavelengths.std() = ' + str(wavelengths.std()))
+    print('')
 
 
 def main():
@@ -61,37 +87,33 @@ def main():
     patch = ida[500:580, 450:575]
     # cv2.imshow('patch', patch)  # [debug]
     # cv2.waitKey(0)
-    cv2.imwrite('patch1.jpg', patch)
-
+    # cv2.imwrite('patch1.jpg', patch)
     wavelengths = compute_wavelengths(patch)
-
-    # Apply Gaussian blur to filter out noise on image data
-    kernel_size = (5, 5)
-    wavelengths = cv2.GaussianBlur(wavelengths, kernel_size, 0)
-    print('wavelengths.min() = ' + str(wavelengths.min()))
-    print('wavelengths.max() = ' + str(wavelengths.max()))
-    print('wavelengths.mean() = ' + str(wavelengths.mean()))
-    print('wavelengths.std() = ' + str(wavelengths.std()))
-
-    # print(wavelengths)
-
-    hist = cv2.calcHist([wavelengths], [0], None, [28], [0.589, 0.607]).flatten()
-    plt.plot(hist)
-    plt.title('Wavelengths Histogram')
-    plt.ylabel('Count')
-    plt.yscale('log')
-    plt.xlabel('Bins: 29 bins from .589 to .607 microns at 0.001 micron each')
-
-    # ticks = np.arange(0.589, 0.607, 0.001)
-    # labels = range(ticks.size)
-    # print('ticks = ' + str(ticks))
-    # plt.xticks(ticks)
-    plt.show()
+    print_wavelength_info(wavelengths)
+    plot_histogram(wavelengths, 'images/ida_hist.png')
+    cv2.imwrite('images/ida_patch.png', patch)
 
     olivine = cv2.imread('images/Lunar_Olivine_Basalt_15555_from_Apollo_15.jpg')
     patch = olivine[850:1550, 1250:1950]
-    cv2.imshow('patch', patch)  # [debug]
-    cv2.waitKey(0)
+    wavelengths = compute_wavelengths(patch)
+    print_wavelength_info(wavelengths)
+    plot_histogram(wavelengths, 'images/olivite_hist.png')
+    cv2.imwrite('images/olivite_patch.png', patch)
+
+    chondrite = cv2.imread('images/chondrite (contains olivine and pyroxene).jpg')
+    patch = chondrite[200:500, 200:600]
+    wavelengths = compute_wavelengths(patch)
+    print_wavelength_info(wavelengths)
+    plot_histogram(wavelengths, 'images/chondrite_hist.png')
+    cv2.imwrite('images/chondrite_patch.png', patch)
+
+    eros = cv2.imread('images/eros_asteroid.tif')
+    patch = eros[315:355, 470:550]
+    wavelengths = compute_wavelengths(patch)
+    print_wavelength_info(wavelengths)
+    plot_histogram(wavelengths, 'images/eros_hist.png')
+    cv2.imwrite('images/eros_patch.png', patch)
+
 
 if __name__ == "__main__":
     main()
