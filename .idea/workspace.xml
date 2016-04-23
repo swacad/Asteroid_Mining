@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb51e49f-4656-4083-9525-9c1ecc478553" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Research/Asteroid Images/Lunar_Olivine_Basalt_15555_from_Apollo_15_in_National_Museum_of_Natural_History.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Research/Asteroid Images/chondrite (contains olivine and pyroxene).jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ida.jpg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AsteroidMining.pptx" afterPath="$PROJECT_DIR$/AsteroidMining.pptx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/asteroid_mining.py" afterPath="$PROJECT_DIR$/asteroid_mining.py" />
     </list>
     <ignored path="Asteroid_Mining.iws" />
@@ -16,7 +20,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Asteroid_Mining$asteroid_mining.coverage" NAME="asteroid_mining Coverage Results" MODIFIED="1461441780542" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Asteroid_Mining$asteroid_mining.coverage" NAME="asteroid_mining Coverage Results" MODIFIED="1461448696795" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -30,8 +34,8 @@
       <file leaf-file-name="asteroid_mining.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/asteroid_mining.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-406">
-              <caret line="978" column="32" selection-start-line="978" selection-start-column="32" selection-end-line="978" selection-end-column="32" />
+            <state relative-caret-position="393">
+              <caret line="93" column="4" selection-start-line="93" selection-start-column="4" selection-end-line="93" selection-end-column="4" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -392,8 +396,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/asteroid_mining.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-406">
-          <caret line="978" column="32" selection-start-line="978" selection-start-column="32" selection-end-line="978" selection-end-column="32" />
+        <state relative-caret-position="393">
+          <caret line="93" column="4" selection-start-line="93" selection-start-column="4" selection-end-line="93" selection-end-column="4" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
