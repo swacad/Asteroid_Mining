@@ -976,8 +976,8 @@ def main():
     # Driver code
     ida = cv2.imread("ida.jpg")
     patch = ida[500:580, 450:575]
-    # cv2.imshow('patch', patch)  # [debug]
-    # cv2.waitKey(0)
+    cv2.imshow('patch', patch)  # [debug]
+    cv2.waitKey(0)
 
     patch_hsv = np.zeros((patch.shape))
     patch_hsv = cv2.cvtColor(patch, cv2.COLOR_BGR2HSV)
