@@ -65,9 +65,9 @@ def plot_histogram(wavelengths, filename):
     hist = cv2.calcHist([wavelengths], [0], None, [100], [plot_min, plot_max]).flatten()
     plt.plot(hist)
     plt.title('Wavelengths Histogram')
-    plt.ylabel('Count')
+    plt.ylabel('Count (log scale)')
     plt.yscale('log')
-    plt.xlabel('Bins')
+    plt.xlabel('100 Bins range: ' + str(plot_min) + ' - ' + str(plot_max) + ' microns')
     # plt.show()
     plt.savefig(filename)
 
@@ -83,36 +83,41 @@ def print_wavelength_info(wavelengths):
 
 def main():
     # Driver code
+    green = (0, 255, 0)
     ida = cv2.imread("images/ida.jpg")
     patch = ida[500:580, 450:575]
+    cv2.rectangle(ida, (450, 500), (575, 580), green)
     # cv2.imshow('patch', patch)  # [debug]
     # cv2.waitKey(0)
     # cv2.imwrite('patch1.jpg', patch)
     wavelengths = compute_wavelengths(patch)
     print_wavelength_info(wavelengths)
     plot_histogram(wavelengths, 'images/ida_hist.png')
-    cv2.imwrite('images/ida_patch.png', patch)
+    cv2.imwrite('images/ida_rect.png', ida)
 
     olivine = cv2.imread('images/Lunar_Olivine_Basalt_15555_from_Apollo_15.jpg')
     patch = olivine[850:1550, 1250:1950]
+    cv2.rectangle(olivine, (1250, 850), (1950, 1550), green)
     wavelengths = compute_wavelengths(patch)
     print_wavelength_info(wavelengths)
-    plot_histogram(wavelengths, 'images/olivite_hist.png')
-    cv2.imwrite('images/olivite_patch.png', patch)
+    plot_histogram(wavelengths, 'images/olivine_hist.png')
+    cv2.imwrite('images/olivine_rect.png', olivine)
 
     chondrite = cv2.imread('images/chondrite (contains olivine and pyroxene).jpg')
     patch = chondrite[200:500, 200:600]
+    cv2.rectangle(chondrite, (200, 200), (600, 500), green)
     wavelengths = compute_wavelengths(patch)
     print_wavelength_info(wavelengths)
     plot_histogram(wavelengths, 'images/chondrite_hist.png')
-    cv2.imwrite('images/chondrite_patch.png', patch)
+    cv2.imwrite('images/chondrite_rect.png', chondrite)
 
     eros = cv2.imread('images/eros_asteroid.tif')
     patch = eros[315:355, 470:550]
+    cv2.rectangle(eros, (470, 315), (550, 355), green)
     wavelengths = compute_wavelengths(patch)
     print_wavelength_info(wavelengths)
     plot_histogram(wavelengths, 'images/eros_hist.png')
-    cv2.imwrite('images/eros_patch.png', patch)
+    cv2.imwrite('images/eros_rect.png', eros)
 
 
 if __name__ == "__main__":
