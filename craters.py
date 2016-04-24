@@ -480,12 +480,12 @@ def main():
     # Crater detection
     ast = cv2.imread('images/PIA15351.jpg', 0)
     ast_blurred = cv2.GaussianBlur(ast, (7, 7), 1)
-    cv2.imwrite('images/ast_gaussian_blur.png', ast_blurred)
+    # cv2.imwrite('images/ast_gaussian_blur.png', ast_blurred)
     ast_blurred = cv2.medianBlur(ast, 7)
-    cv2.imwrite('images/ast_median_blur.png', ast_blurred)
+    # cv2.imwrite('images/ast_median_blur.png', ast_blurred)
 
     ast_blurred_edge = cv2.Canny(ast_blurred, 50, 100)
-    cv2.imwrite('images/ast_edge.png', ast_blurred_edge)
+    # cv2.imwrite('images/ast_edge.png', ast_blurred_edge)
     centers, radii = find_circles(ast_blurred_edge, (5, 100), resolution=pi/24, Q=10, threshold=16)
     centers = remove_close_overlapping_circles(centers, max_distance=20)
 
